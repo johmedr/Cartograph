@@ -5,7 +5,7 @@ set(EXECUTABLE_OUTPUT_PATH bin)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -lmraa")
 
-
-set(SOURCE_FILES src)
+include_directories(include)
+set(SOURCE_FILES src/Servo.cpp include/Servo.h)
 
 add_executable(Embedded ${SOURCE_FILES})
