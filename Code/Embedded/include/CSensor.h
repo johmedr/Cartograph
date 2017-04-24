@@ -7,14 +7,24 @@
 
 #include "CInterface.h"
 
-/** Classe CSensor
+/*  Template de classe CSensor
  *  Herite de CInterface. Classe representant un capteur.
+ *  Differents capteurs retournent des valeurs de differents types
  */
+template<typename ValueType>
 class CSensor : public CInterface {
     protected:
+    ValueType value;
 
     public:
-        CSensor();
+    CSensor<ValueType>() : CInterface() {}
+
+    CSensor<ValueType>(const unsigned int pinNumber) : CInterface(pinNumber) {}
+
+    virtual ValueType getValue() const { return value; };
+};
+
+class CAccelero : public CSensor<float **> {
 };
 
 #endif //EMBEDDED_CSENSOR_H
