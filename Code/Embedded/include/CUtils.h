@@ -5,30 +5,26 @@
 #ifndef EMBEDDED_UTILS_H
 #define EMBEDDED_UTILS_H
 
-#include <iostream>
-// [TODO] Check that
-/*#define assert(exp) if(!exp) {\
-                           std::cout << "[EE] Error in file " << __FILE__ << " line " << __LINE__ << " : assertion failed !";\
-                         abort(-1);}\
-*/
+#include "Arduino.h"
 
+#define InitPlatform() InitArduino();
 
 #ifdef __DEBUG__
 
-#ifdef __GALILEO__
-#define PrintDbg(text) std::cout<< "[Dbg] In file " << __FILE__ << " line " << __LINE__  << " : " << text << std::endl;
-#define InitPlatform() Init_Galileo();
-#else
-#ifdef __ARDUINO__
+/* Fonction utilisée pour debugger grace a la communication serie */
+void printDebugArduino(char * text, const char * fileName, const int lineNumber);
 
-void printDebugArduino(char * )
+/* Fonction utilisée pour poser des assertions (celles non-validées quittent le programme) */
+void assertArduino(int expression, const char * fileName, const int lineNumber);
 
-#define PrintDbg(text) std::cout<< "[Dbg] In file " << __FILE__ << " line " << __LINE__  << " : " << text << std::endl;
-#define InitPlatform() Init_Arduino();
-#endif
+#define Assert(expr) assertArduino(expr, __FILE__, __LINE);
+#define PrintDbg(text) printDebugArduino(text, __FILE__, __LINE__);
 
 #else
+
+#define Assert(expr)
 #define PrintDbg(text)
+
 #endif
 
 

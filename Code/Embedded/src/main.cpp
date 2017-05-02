@@ -2,6 +2,7 @@
 // Created by yop on 30/03/17.
 //
 #define __DEBUG__
+#define __ARDUINO__
 
 #include "CServo.h"
 #include "CSensor.h"
@@ -18,7 +19,6 @@ void handler(int arg) {
 
 int main(int argc, char *argv[]) {
     keepRunning = 1;
-
 
     /** Associate ctrl+c with our handler that clears the 'keepRunning'
     * flag that allows us to stop the PWM when exiting*/

@@ -6,6 +6,7 @@
 #define EMBEDDED_SERVO_H
 
 #include "CInterface.h"
+#include <Servo.h>
 
 #define DEFAULT_SERVO_PIN 5
 #define MIN_ALPHA 0
@@ -13,9 +14,8 @@
 #define PERIOD_US 20000
 
 
-class CServo : public CInterface {
+class CServo : public CInterface, public Servo {
     protected:
-        mraa_pwm_context pwmPin;
         float angle;
 
     /* Fonction init()
