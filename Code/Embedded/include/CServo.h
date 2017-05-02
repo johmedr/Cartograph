@@ -8,8 +8,8 @@
 #include "CInterface.h"
 
 #define DEFAULT_SERVO_PIN 5
-#define MIN_ALPHA 0.1
-#define MAX_ALPHA 0.6
+#define MIN_ALPHA 0
+#define MAX_ALPHA 1
 #define PERIOD_US 20000
 
 
@@ -29,13 +29,13 @@ class CServo : public CInterface {
 
     CServo(const int pin_number);
 
-        float getAngle() const;
+    float getAngle() const;
 
     /* Fonction setAngle()
      * Calcule la taille de pulse a envoyer pour deplacer le servo a l'angle souhaite
      * Envoie ce pulse
      */
-        void setAngle(const float target_angle);
+    void setAngle(const float target_angle);
 
     void enable();
 

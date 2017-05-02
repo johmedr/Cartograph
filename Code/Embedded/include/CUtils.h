@@ -12,10 +12,25 @@
                          abort(-1);}\
 */
 
-#ifdef DEBUG
+
+#ifdef __DEBUG__
+
+#ifdef __GALILEO__
 #define PrintDbg(text) std::cout<< "[Dbg] In file " << __FILE__ << " line " << __LINE__  << " : " << text << std::endl;
+#define InitPlatform() Init_Galileo();
+#else
+#ifdef __ARDUINO__
+
+void printDebugArduino(char * )
+
+#define PrintDbg(text) std::cout<< "[Dbg] In file " << __FILE__ << " line " << __LINE__  << " : " << text << std::endl;
+#define InitPlatform() Init_Arduino();
+#endif
+
 #else
 #define PrintDbg(text)
 #endif
+
+
 
 #endif //EMBEDDED_UTILS_

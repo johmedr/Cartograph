@@ -1,7 +1,7 @@
 //
 // Created by yop on 30/03/17.
 //
-#define DEBUG
+#define __DEBUG__
 
 #include "CServo.h"
 #include "CSensor.h"
