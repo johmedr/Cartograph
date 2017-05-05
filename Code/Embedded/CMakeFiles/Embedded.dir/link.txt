@@ -1,0 +1,1 @@
+/usr/bin/c++    -lmraa -Wall   CMakeFiles/Embedded.dir/src/CServo.cpp.o CMakeFiles/Embedded.dir/src/main.cpp.o  -o bin/Embedded 
