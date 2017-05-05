@@ -22,9 +22,14 @@ class CSensor : public CInterface {
     CSensor<ValueType>(const unsigned int pinNumber) : CInterface(pinNumber) {}
 
     virtual ValueType getValue() const { return value; };
-};
 
-class CAccelero : public CSensor<float **> {
-};
+    virtual void enable() override {
+        enabled = 1;
+    }
 
+    virtual void disable() override {
+        enabled = 0;
+    }
+};
 #endif //EMBEDDED_CSENSOR_H
+

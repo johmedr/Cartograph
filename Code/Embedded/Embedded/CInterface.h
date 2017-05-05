@@ -6,8 +6,6 @@
 #define EMBEDDED_INTERFACE_H
 
 #include "CUtils.h"
-#include <mraa.h>
-#include <signal.h>
 
 /** Classe abstraite CInterface
  *  Classe mere de tous les capteurs et actionneurs permettant
@@ -15,19 +13,20 @@
  */
 class CInterface {
     protected:
-        unsigned int pin;
-    static unsigned int nbOfInstances;
+        unsigned int enabled; 
+        unsigned int _pin;
+        static unsigned int nbOfInstances;
     public:
     CInterface() {
         nbOfInstances++;
-        pin = nbOfInstances;
+        _pin = nbOfInstances;
     }
 
-    CInterface(const unsigned int pin_number) : pin(pin_number) { nbOfInstances++; };
+    CInterface(const unsigned int pin_number) : _pin(pin_number) { nbOfInstances++; };
 
-    void attach(const unsigned int pin_number) { pin = pin_number; }
+    virtual void attach(const unsigned int pin_number) { _pin = pin_number; }
 
-    unsigned int getPinNumber() const { return pin; }
+    unsigned int getPinNumber() const { return _pin; }
 
     virtual void enable() = 0;
 
@@ -36,3 +35,4 @@ class CInterface {
 
 
 #endif //EMBEDDED_INTERFACE_H
+
